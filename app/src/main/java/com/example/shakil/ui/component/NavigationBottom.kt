@@ -29,7 +29,6 @@ fun NavigationBottom(navController: NavController) {
 
     BottomNavigation(
     ) {
-
         items.forEach {
             BottomNavigationItem(
                 icon = {

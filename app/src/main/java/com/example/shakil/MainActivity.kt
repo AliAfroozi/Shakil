@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.shakil.ui.component.NavigationBottom
+import com.example.shakil.ui.component.TopAppBar
 import com.example.shakil.ui.screen.*
 import com.example.shakil.ui.theme.ShakilTheme
 
@@ -40,9 +41,11 @@ fun Content() {
 
     val navController = rememberNavController()
 
-    Scaffold(bottomBar = {
-        NavigationBottom(navController)
-    }) {
+    Scaffold(
+        bottomBar = {
+        NavigationBottom(navController) },
+        topBar = { TopAppBar() }
+    ) {
 
         val navHost = NavHost(navController = navController , startDestination = "home"){
             composable("home") {
