@@ -5,12 +5,17 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.shakil.ui.screen.MainScreen
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.shakil.ui.component.NavigationBottom
+import com.example.shakil.ui.screen.*
 import com.example.shakil.ui.theme.ShakilTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,11 +28,42 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    MainScreen()
+                    Content()
                 }
             }
         }
     }
+}
+
+@Composable
+fun Content() {
+
+    val navController = rememberNavController()
+
+    Scaffold(bottomBar = {
+        NavigationBottom(navController)
+    }) {
+
+        val navHost = NavHost(navController = navController , startDestination = "home"){
+            composable("home") {
+                MainScreen()
+            }
+            composable("search"){
+                SearchScreen()
+            }
+            composable("addPost"){
+                ActivitiesScreen()
+            }
+            composable("activity"){
+                AddPostScreen()
+            }
+            composable("profile"){
+                ProfileScreen()
+            }
+        }
+
+    }
+
 }
 
 
