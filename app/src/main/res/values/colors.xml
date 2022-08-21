@@ -8,5 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="shadow">#000000</color>
-    <color name="eror_red">#FF3333</color>
+    <color name="error_red">#FF3333</color>
 </resources>

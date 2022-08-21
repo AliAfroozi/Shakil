@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.sp
 import com.example.shakil.R
 import com.example.shakil.model.Story
+import com.example.shakil.model.User
 import com.example.shakil.ui.theme.Purple700
 import com.example.shakil.ui.theme.RedColor
 import com.example.shakil.ui.theme.ShadowColor
@@ -35,8 +36,7 @@ fun StoryRow(stories: MutableList<Story>) {
     Row() {
         StoryItem(
             item = Story(
-                "Ali Afroozi",
-                "https://s25.picofile.com/file/8452348234/photo_2022_08_20_20_35_21.jpg",
+                User("Ali Afroozi" , "https://s25.picofile.com/file/8452348234/photo_2022_08_20_20_35_21.jpg"  , "Ali Afroozi"),
                 false
             ), true
         )
@@ -72,7 +72,7 @@ fun StoryItem(item: Story, isMe: Boolean = false) {
 
 
             GlideImage(
-                imageModel = item.image,
+                imageModel = item.user.profileImage,
                 // Crop, Fit, Inside, FillHeight, FillWidth, None
                 contentScale = ContentScale.Crop,
                 // shows a placeholder while loading the image.
@@ -139,9 +139,9 @@ fun StoryItem(item: Story, isMe: Boolean = false) {
 
 
         Text(
-            text = if (item.username.length >= 12) {
-                item.username.substring(0, 12) + "..."
-            } else item.username,
+            text = if (item.user.userName.length >= 12) {
+                item.user.userName.substring(0, 12) + "..."
+            } else item.user.userName,
 
             color = Color.Black,
             fontSize = 10.sp,

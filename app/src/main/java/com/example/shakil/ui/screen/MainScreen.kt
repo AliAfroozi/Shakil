@@ -2,12 +2,12 @@ package com.example.shakil.ui.screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.shakil.data.MockData
 import com.example.shakil.model.Story
+import com.example.shakil.ui.component.PostView
 import com.example.shakil.ui.component.StoryRow
 import com.example.shakil.ui.theme.lightGray
 
@@ -22,14 +22,9 @@ fun MainScreen(stories: MutableList<Story>) {
             color = lightGray,
             thickness = 1.dp
         )
-        PostView()
+        PostView(MockData.posts)
     }
 
-}
-
-@Composable
-fun PostView() {
-    Text(text = "sample text")
 }
 
 
