@@ -1,10 +1,8 @@
 package com.example.shakil.data
 
-import com.bumptech.glide.Glide.init
 import com.example.shakil.model.Post
 import com.example.shakil.model.Story
 import com.example.shakil.model.User
-import kotlin.collections.ArrayList
 
 object MockData {
     val stories = java.util.ArrayList<Story>()
@@ -17,25 +15,27 @@ object MockData {
         users.add(User("Lucy Baker" , "https://img.freepik.com/free-photo/side-view-child-standing-karate-stance-studio_7502-4359.jpg?w=996&t=st=1660757403~exp=1660758003~hmac=16e95d5db2c220b55891588f6c89e7c1c161fa6fa1060833cc2480959fbf692a"   , "Lucy Baker"))
         users.add(User("Timmy Jon" , "https://img.freepik.com/free-photo/confident-young-handsome-cook-chef-uniform-standing-white-wall-isolated-orange-wall-with-copy-space_141793-101130.jpg?w=996&t=st=1660757468~exp=1660758068~hmac=79e7d221a4d7528031520e3152e1e6e077eb4385b959857ccde3c692ec319dfb"  , "Timmy Jon"))
         users.add(User("Brayan wick" , "https://img.freepik.com/free-photo/portrait-young-motivated-carpenter-standing-by-woodworking-machine-his-carpentry-workshop_342744-823.jpg?w=996&t=st=1660757542~exp=1660758142~hmac=f8ac3ce2caf87ffdd6ead77a5178be8f2b38c98e5b6802d5b7c5340258b13c46"   , "Brayan wick"))
+        users.add(User("Error User" , ""   , "Error User"))
         users.add(User("Aslan sori" , "https://img.freepik.com/free-photo/mechanic-with-spanners-pockets_1170-1502.jpg?w=996&t=st=1660757503~exp=1660758103~hmac=fa5ddf8dab7239be1895841dec9b2bef9cd32cdca8cf07d4e2a2b2850bfa5885" , "Aslan sori"))
 
 
-        stories.add(Story(users[0],true))
-        stories.add(Story(users[1], false))
-        stories.add(Story(users[2],false))
-        stories.add(Story(users[3],false))
-        stories.add(Story(users[4],false))
-        stories.add(Story(users[5],false))
+        stories.add(Story(users[0], users[0].profileImage ,  true))
+        stories.add(Story(users[1], users[1].profileImage ,false))
+        stories.add(Story(users[2], users[2].profileImage ,false))
+        stories.add(Story(users[3], users[3].profileImage ,false))
+        stories.add(Story(users[4], users[4].profileImage ,false))
+        stories.add(Story(users[5], users[5].profileImage ,false))
+        stories.add(Story(users[6], users[5].profileImage ,false))
 
 
 
-        posts.add(Post(users[0] , users[0].profileImage , "" ,"Iran Gillan"  ))
-        posts.add(Post(users[1] ,  users[1].profileImage , "" , "Iran Shiraz" ))
-        posts.add(Post(users[2] ,  users[2].profileImage , "" ,  "America California" ))
-        posts.add(Post(users[3] ,  users[3].profileImage, "" , "Canada Toronto"  ))
-        posts.add(Post(users[4] ,  users[4].profileImage , "" , "England London" ))
-        posts.add(Post(User("" , " " , " " ) ,  "" , "" , "Iran Hamedan"  ))
-        posts.add(Post(users[5] ,  users[5].profileImage , "" , "Iran Hamedan"  ))
+        posts.add(Post(users[0] , users[0].profileImage , " Hey guys , this page is created to show you how to speak correctly in sessions. Follow page and videos to be notified." ,"Iran Gillan"  ))
+        posts.add(Post(users[1] ,  users[1].profileImage , " Wanna learn how to play a violin? Ok this page is for you! " , "Iran Shiraz" ))
+        posts.add(Post(users[2] ,  users[2].profileImage , "\"There’s much more to life than dyin’ over your past mistakes and people who threw dirt on your name.\" — Lil Nas X, \"Sun Goes Down\"" ,  "America California" ))
+        posts.add(Post(users[3] ,  users[3].profileImage, "\"Lightning strikes every time she moves.\" — Calvin Harris, \"This Is What You Came For\"" , "Canada Toronto"  ))
+        posts.add(Post(users[4] ,  users[4].profileImage , "“Life without dreaming is a life without meaning.” – Wale, “Aston Martin Music”" , "England London" ))
+        posts.add(Post(users[5] ,  "" , "" , "Iran Hamedan"  ))
+        posts.add(Post(users[6] ,  users[6].profileImage , "\"I'm on the pursuit of happiness and I know everything that shine ain't always gonna be gold, hey, I'll be fine once I get it, yeah, I'll be good.\" — Kid Cudi, \"Pursuit of Happiness (Nightmare)\"" , "Iran Hamedan"  ))
 
 
 }

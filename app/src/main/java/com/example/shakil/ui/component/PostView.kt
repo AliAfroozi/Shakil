@@ -9,6 +9,8 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -17,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.shakil.R
@@ -42,7 +45,10 @@ fun PostView(posts: ArrayList<Post>) {
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PostItem(item: Post, isLastPost: Boolean = false) {
-    Column(modifier = Modifier.padding(5.dp)) {
+        var favoriteSate = remember {
+        mutableStateOf(false)
+    }
+    Column(modifier = Modifier.padding(15.dp)) {
         Row() {
 
             Card(
@@ -71,8 +77,7 @@ fun PostItem(item: Post, isLastPost: Boolean = false) {
                     failure = {
                         Column(
                             modifier = Modifier
-                                .fillMaxSize()
-                                .padding(0.dp, 20.dp),
+                                .fillMaxSize(),
                             verticalArrangement = Arrangement.Center,
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
@@ -142,7 +147,8 @@ fun PostItem(item: Post, isLastPost: Boolean = false) {
                             contentDescription = "",
                             modifier = Modifier
                                 .fillMaxSize()
-                                .align(CenterHorizontally)
+                                .align(CenterHorizontally),
+                            tint = if (isSystemInDarkTheme()) Color.LightGray else Color.Black
                         )
                         Spacer(modifier = Modifier.height(80.dp))
                     }
@@ -150,10 +156,33 @@ fun PostItem(item: Post, isLastPost: Boolean = false) {
 
                 })
         }
+        Row() {
+            IconButton(onClick = { favoriteSate.value = !favoriteSate.value }) {
 
-        Spacer(modifier = Modifier.height(10.dp))
+                Icon(
+                    if (favoriteSate.value) painterResource(id = R.drawable.ic_baseline_favorite_24)
+                    else painterResource(id = R.drawable.ic_baseline_favorite_border_24),
+                    contentDescription = "",
+                    tint = if (favoriteSate.value) Color.Red
+                    else if (!favoriteSate.value && isSystemInDarkTheme()) Color.LightGray
+                    else Color.Black,
+                    modifier = Modifier.size(28.dp)
+                )
+            }
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    painterResource(id = R.drawable.ic_baseline_send_24),
+                    contentDescription = "",
+                    tint = if (isSystemInDarkTheme()) Color.LightGray else Color.Black,
+                    modifier = Modifier.size(28.dp)
+                )
+            }
+        }
 
+        Text(text = item.postCaption, fontSize = 12.sp, textAlign = TextAlign.Justify)
     }
+
+
 
     if (isLastPost) {
         Spacer(modifier = Modifier.height(70.dp))
