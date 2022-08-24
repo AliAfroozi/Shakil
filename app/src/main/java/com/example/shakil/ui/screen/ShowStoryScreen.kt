@@ -199,15 +199,9 @@ fun ShowStoryScreen(index: Int) {
                             .fillMaxSize()
                     ) {
 
-                        TextField(
-                            value = text,
-                            modifier = Modifier.fillMaxSize().background(Color.Black),
-                            onValueChange = {
-                                text = it
-                            },
-                            placeholder = { Text(text = "Send message" , color = Color.White) },
-                            colors = TextFieldDefaults.textFieldColors(textColor = Color.White , backgroundColor = Color(200, 0 , 0) )
-                        )
+                        TextField(value = text, onValueChange = { textFieldValue ->
+                            text = textFieldValue
+                        } , colors = TextFieldDefaults.textFieldColors(backgroundColor = Color.Black , textColor = Color.White) )
                     }
 
                 }
