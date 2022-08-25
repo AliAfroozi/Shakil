@@ -1,4 +1,6 @@
 package com.example.shakil.model
 
-data class Story(val username: String, val image: String, val isLive: Boolean)
+import androidx.navigation.NavHostController
+
+data class Story(val user: User, val storyImage: String , val isLive: Boolean)
 
