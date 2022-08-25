@@ -1,6 +1,5 @@
 package com.example.shakil
 
-import android.content.res.Resources
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,13 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
-import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.core.graphics.toColor
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -50,9 +47,11 @@ fun Content() {
 
     val navController = rememberNavController()
     val fullScreen = remember { mutableStateOf(false) }
+    val selectedNavigationBottom = remember { mutableStateOf("home") }
+
 
     Scaffold(
-        bottomBar = { if (!fullScreen.value) NavigationBottom(navController) },
+        bottomBar = { if (!fullScreen.value) NavigationBottom(navController , selectedNavigationBottom) },
         topBar = { if (!fullScreen.value) TopAppBar() }
     ) {
 
@@ -65,23 +64,29 @@ fun Content() {
                     systemUiController.statusBarDarkContentEnabled
                 }
 
+                selectedNavigationBottom.value = "home"
+
                 fullScreen.value = false
                 MainScreen(MockData.stories, navController, fullScreen)
             }
             composable("search") {
                 fullScreen.value = false
+                selectedNavigationBottom.value = "search"
                 SearchScreen()
             }
             composable("addPost") {
                 fullScreen.value = false
+                selectedNavigationBottom.value = "addPost"
                 ActivitiesScreen()
             }
             composable("activity") {
                 fullScreen.value = false
+                selectedNavigationBottom.value = "activity"
                 AddPostScreen()
             }
             composable("profile") {
                 fullScreen.value = false
+                selectedNavigationBottom.value = "profile"
                 ProfileScreen()
             }
             composable(

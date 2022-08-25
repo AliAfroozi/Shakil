@@ -20,10 +20,9 @@ import com.example.shakil.ui.theme.lightGray
 import com.example.shakil.utils.NavigationItems
 
 @Composable
-fun NavigationBottom(navController: NavController) {
+fun NavigationBottom(navController: NavController, selectedBottom: MutableState<String>) {
 
 
-        val selectedBottom = remember { mutableStateOf("home") }
 
         var items = listOf(
             NavigationItems.home,
