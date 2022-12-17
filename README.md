@@ -1,3 +1,3 @@
 # Shakil
-Shakil app repo
-this is kind of social media app
+Shakil stands for Share your Skill and its purpose is to provide an eviroment for people to share their usefull and efficiant skills.
+
