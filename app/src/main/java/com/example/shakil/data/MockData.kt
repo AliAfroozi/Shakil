@@ -10,7 +10,7 @@ object MockData {
     val posts = java.util.ArrayList<Post>()
     init {
 
-        users.add(User("Sina.M" , "https://img.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?w=996&t=st=1660752984~exp=1660753584~hmac=96aadf36c237aef691556424fd2d5cf8c37a6089f0b4b6bc8c7384708963c4d8" ,  "Sina Moradi"))
+        users.add(User("Sina.M" , "https://img.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?w=996&t=st=1660752984~exp=1660753584~hmac=96aadf36c237aef691556424fd2d5cf8c37a6089f0b4b6bc8c7384708963c4d8" ,  "Sina Moradi" , "1234"))
         users.add(User("M.Jafari" , "https://img.freepik.com/free-photo/playing-violin_1150-8374.jpg?w=900&t=st=1660757354~exp=1660757954~hmac=a8c731881bef3e1d2d3ce57eaa326208f97d6b5fbcd262c38808c248f944c814"   , "Mostafa Jafari"))
         users.add(User("Lucy Baker" , "https://img.freepik.com/free-photo/side-view-child-standing-karate-stance-studio_7502-4359.jpg?w=996&t=st=1660757403~exp=1660758003~hmac=16e95d5db2c220b55891588f6c89e7c1c161fa6fa1060833cc2480959fbf692a"   , "Lucy Baker"))
         users.add(User("Timmy Jon" , "https://img.freepik.com/free-photo/confident-young-handsome-cook-chef-uniform-standing-white-wall-isolated-orange-wall-with-copy-space_141793-101130.jpg?w=996&t=st=1660757468~exp=1660758068~hmac=79e7d221a4d7528031520e3152e1e6e077eb4385b959857ccde3c692ec319dfb"  , "Timmy Jon"))

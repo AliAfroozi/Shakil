@@ -30,11 +30,17 @@ fun MainScreen() {
             topBar = { if (!fullScreen.value) TopAppBar() }
         ) {
 
-            val navHost = NavHost(navController = navController, startDestination = "home") {
+            val navHost = NavHost(navController = navController, startDestination = "splash") {
+
+
+                composable("splash") {
+                    fullScreen.value = true
+                    SplashScreen(navController)
+                }
 
                 composable("login") {
                     fullScreen.value = true
-                    LoginScreen()
+                    LoginScreen(navController)
                 }
 
                 composable("home") {
