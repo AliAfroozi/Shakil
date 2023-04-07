@@ -35,76 +35,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Content()
+                    MainScreen()
                 }
             }
         }
     }
-}
-
-@Composable
-fun Content() {
-
-    val navController = rememberNavController()
-    val fullScreen = remember { mutableStateOf(false) }
-    val selectedNavigationBottom = remember { mutableStateOf("home") }
-
-
-    Scaffold(
-        bottomBar = { if (!fullScreen.value) NavigationBottom(navController , selectedNavigationBottom) },
-        topBar = { if (!fullScreen.value) TopAppBar() }
-    ) {
-
-        val navHost = NavHost(navController = navController, startDestination = "home") {
-            composable("home") {
-                val systemUiController = rememberSystemUiController()
-                if (!isSystemInDarkTheme()) {
-                    systemUiController.setSystemBarsColor(Color.White)
-                    systemUiController.setStatusBarColor(Color.White)
-                    systemUiController.statusBarDarkContentEnabled
-                }
-
-                selectedNavigationBottom.value = "home"
-
-                fullScreen.value = false
-                MainScreen(MockData.stories, navController, fullScreen)
-            }
-            composable("search") {
-                fullScreen.value = false
-                selectedNavigationBottom.value = "search"
-                SearchScreen()
-            }
-            composable("addPost") {
-                fullScreen.value = false
-                selectedNavigationBottom.value = "addPost"
-                ActivitiesScreen()
-            }
-            composable("activity") {
-                fullScreen.value = false
-                selectedNavigationBottom.value = "activity"
-                AddPostScreen()
-            }
-            composable("profile") {
-                fullScreen.value = false
-                selectedNavigationBottom.value = "profile"
-                ProfileScreen()
-            }
-            composable(
-                "ShowStory/{index}",
-                arguments = listOf(navArgument("index") { type = NavType.IntType })
-            ) { backStack ->
-
-                val systemUiController = rememberSystemUiController()
-                systemUiController.setSystemBarsColor(Color.Black)
-
-                fullScreen.value = true
-                ShowStoryScreen(backStack.arguments?.get("index") as Int)
-
-            }
-        }
-
-    }
-
 }
 
 
