@@ -24,12 +24,13 @@ fun MainScreen() {
 
         val navController = rememberNavController()
         val fullScreen = remember { mutableStateOf(false) }
+        val noTopBar = remember { mutableStateOf(false) }
         val selectedNavigationBottom = remember { mutableStateOf("home") }
 
 
         Scaffold(
             bottomBar = { if (!fullScreen.value) NavigationBottom(navController , selectedNavigationBottom) },
-            topBar = { if (!fullScreen.value) TopAppBar() }
+            topBar = { if (!noTopBar.value) TopAppBar() }
         ) {
 
             val navHost = NavHost(navController = navController, startDestination = "splash") {
@@ -37,11 +38,13 @@ fun MainScreen() {
 
                 composable("splash") {
                     fullScreen.value = true
+                    noTopBar.value = true
                     SplashScreen(navController)
                 }
 
                 composable("login") {
                     fullScreen.value = true
+                    noTopBar.value = true
                     LoginScreen(navController)
                 }
 
@@ -57,26 +60,31 @@ fun MainScreen() {
                     selectedNavigationBottom.value = "home"
 
                     fullScreen.value = false
+                    noTopBar.value = false
                     HomeScreen(MockData.stories, navController, fullScreen)
                 }
 
                 composable("search") {
                     fullScreen.value = false
+                    noTopBar.value = false
                     selectedNavigationBottom.value = "search"
                     SearchScreen()
                 }
                 composable("addPost") {
                     fullScreen.value = false
+                    noTopBar.value = false
                     selectedNavigationBottom.value = "addPost"
                     ActivitiesScreen()
                 }
                 composable("activity") {
                     fullScreen.value = false
+                    noTopBar.value = false
                     selectedNavigationBottom.value = "activity"
                     AddPostScreen()
                 }
                 composable("profile") {
-                    fullScreen.value = true
+                    fullScreen.value = false
+                    noTopBar.value = true
                     selectedNavigationBottom.value = "profile"
                     ProfileScreen()
                 }
