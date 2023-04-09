@@ -22,8 +22,6 @@ import com.example.shakil.utils.NavigationItems
 @Composable
 fun NavigationBottom(navController: NavController, selectedBottom: MutableState<String>) {
 
-
-
         var items = listOf(
             NavigationItems.home,
             NavigationItems.search,

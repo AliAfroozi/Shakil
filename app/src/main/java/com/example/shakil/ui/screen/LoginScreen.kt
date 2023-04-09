@@ -20,6 +20,7 @@ import com.example.shakil.R
 import com.example.shakil.data.MockData
 import com.example.shakil.model.User
 import com.example.shakil.ui.theme.DarkPurple
+import com.example.shakil.ui.utils.UserCredential
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
@@ -131,48 +132,53 @@ fun LoginScreen(navController: NavHostController) {
                     Spacer(modifier = Modifier.height(21.dp))
                     Button(
                         onClick = {
-                            if (checkUser(username , password))
-                            navController.navigate("home") else Toast.makeText(
-                                context,
-                                "Password or username is not correct.",
-                                Toast.LENGTH_LONG
-                            ).show()
+                            if (checkUser(username, password)) {
+                                UserCredential.userName  = username
+                                UserCredential.password  = password
+                                navController.navigate("home")
+                            } else {
+                                Toast.makeText(
+                                    context,
+                                    "Password or username is not correct.",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
                         },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(50.dp)
-                            .clip(RoundedCornerShape(50)),
-                        colors = ButtonDefaults.buttonColors(
-                            backgroundColor = DarkPurple,
-                            contentColor = Color.White
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .clip(RoundedCornerShape(50)),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = DarkPurple,
+                    contentColor = Color.White
+                )
+                ) {
+                Text(text = "Login")
+            }
+                Spacer(modifier = Modifier.height(8.dp))
+                Row(
+                    Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    TextButton(onClick = { /*TODO*/ }) {
+                        Text(
+                            text = "Forget Password",
+                            fontSize = 12.sp,
+                            color = Color.LightGray
                         )
-                    ) {
-                        Text(text = "Login")
                     }
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Row(
-                        Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        TextButton(onClick = { /*TODO*/ }) {
-                            Text(
-                                text = "Forget Password",
-                                fontSize = 12.sp,
-                                color = Color.LightGray
-                            )
-                        }
-                        TextButton(onClick = { /*TODO*/ }) {
-                            Text(text = "Register", fontSize = 12.sp, color = Color.LightGray)
-                        }
+                    TextButton(onClick = { /*TODO*/ }) {
+                        Text(text = "Register", fontSize = 12.sp, color = Color.LightGray)
                     }
                 }
             }
         }
     }
 }
+}
 
-fun checkUser(username : String , password: String): Boolean {
+fun checkUser(username: String, password: String): Boolean {
     var users = MockData.users
     users.forEach {
         if (it.userName == username && it.password == password)

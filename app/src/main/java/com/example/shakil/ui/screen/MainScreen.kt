@@ -1,5 +1,6 @@
 package com.example.shakil.ui.screen
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -17,6 +18,7 @@ import com.example.shakil.ui.component.TopAppBar
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MainScreen() {
 
@@ -51,11 +53,13 @@ fun MainScreen() {
                         systemUiController.statusBarDarkContentEnabled
                     }
 
+
                     selectedNavigationBottom.value = "home"
 
                     fullScreen.value = false
                     HomeScreen(MockData.stories, navController, fullScreen)
                 }
+
                 composable("search") {
                     fullScreen.value = false
                     selectedNavigationBottom.value = "search"
@@ -72,7 +76,7 @@ fun MainScreen() {
                     AddPostScreen()
                 }
                 composable("profile") {
-                    fullScreen.value = false
+                    fullScreen.value = true
                     selectedNavigationBottom.value = "profile"
                     ProfileScreen()
                 }
