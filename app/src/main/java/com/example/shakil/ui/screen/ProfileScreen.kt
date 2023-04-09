@@ -45,7 +45,7 @@ fun ProfileScreen() {
         mutableStateOf<List<Int>>(listOf(10 , 12, 13 , 14 , 18 ,19 , 15))
     }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().padding(bottom = 50.dp)) {
         TopBar(
             name = UserCredential.Companion.userName,
             modifier = Modifier
@@ -180,25 +180,6 @@ fun ProfileSection(
     }
 }
 
-@Composable
-fun RoundImage(
-    image: Painter,
-    modifier: Modifier = Modifier
-) {
-    Image(
-        painter = image,
-        contentDescription = null,
-        modifier = modifier
-            .aspectRatio(1f, matchHeightConstraintsFirst = true)
-            .border(
-                width = 1.dp,
-                color = Color.LightGray,
-                shape = CircleShape
-            )
-            .padding(3.dp)
-            .clip(CircleShape)
-    )
-}
 
 @Composable
 fun StatSection(modifier: Modifier = Modifier) {
@@ -277,40 +258,6 @@ fun ProfileDescription(
 }
 
 @Composable
-fun ActionButton(
-    modifier: Modifier = Modifier,
-    text: String? = null,
-    icon: ImageVector? = null
-) {
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier
-            .border(
-                width = 1.dp,
-                color = Color.LightGray,
-                shape = RoundedCornerShape(5.dp)
-            )
-            .padding(6.dp)
-    ) {
-        if (text != null) {
-            Text(
-                text = text,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 14.sp
-            )
-        }
-        if (icon != null) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = Color.Black
-            )
-        }
-    }
-}
-
-@Composable
 fun HighlightSection(
     modifier: Modifier = Modifier,
     highlights: List<GlideImageWithText>
@@ -324,13 +271,14 @@ fun HighlightSection(
                     .padding(end = 15.dp)
             ) {
                 GlideImageCreator(
-                    modifier = Modifier.size(70.dp),
-                    shape = RoundedCornerShape(60.dp),
+                    modifier = Modifier.size(60.dp),
+                    shape = RoundedCornerShape(55.dp),
                     image = highlights[it].image
                 )
                 Text(
                     text = highlights[it].text,
                     overflow = TextOverflow.Ellipsis,
+                    fontSize = 14.sp,
                     textAlign = TextAlign.Center
                 )
             }
